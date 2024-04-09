@@ -59,7 +59,7 @@ const Navbar = () => {
             {label}
           </NavLink>
         ))}
-        <ResumeButton customClasses="ml-3" />
+        <ResumeButton className="ml-3" />
       </ul>
     </div>
   );
