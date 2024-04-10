@@ -26,7 +26,10 @@ export const ResumeButton = ({
         Resume
       </button>
       {isVerifying && (
-        <div className="w-screen bg-black bg-opacity-20 h-full absolute top-0 left-0 flex justify-center items-center">
+        <div
+          className="w-screen bg-black bg-opacity-20 h-full absolute top-0 left-0 flex justify-center items-center"
+          onClick={() => setIsVerifying(false)}
+        >
           <ReCaptcha
             ref={recaptchaRef}
             sitekey={process.env.GOOGLE_SITE_KEY || ''}
