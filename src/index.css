@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 * {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;

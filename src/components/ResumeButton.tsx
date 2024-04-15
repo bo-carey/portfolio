@@ -1,5 +1,6 @@
 import { HTMLProps, useRef, useState } from 'react';
 import ReCaptcha from 'react-google-recaptcha';
+import { RESUME_URI } from '../constants';
 
 export const ResumeButton = ({
   className: customClasses = '',
@@ -12,7 +13,7 @@ export const ResumeButton = ({
   const handleRecaptchaChange = () => {
     const recaptchaValue = recaptchaRef.current?.getValue();
     if (recaptchaValue) {
-      window.open(process.env.RESUME_LINK || '');
+      window.open(RESUME_URI);
     }
     setIsVerifying(false);
   };

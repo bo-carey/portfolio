@@ -9,9 +9,9 @@ const Navbar = () => {
 
   // Array containing navigation items
   const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Projects', path: '/projects' },
+    { label: 'Home', path: '/projects/' },
+    { label: 'About', path: '/projects/about' },
+    { label: 'Projects', path: '/projects/projects' },
   ];
 
   return (
