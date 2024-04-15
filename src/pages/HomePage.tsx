@@ -10,6 +10,12 @@ import {
   FaReact,
 } from 'react-icons/fa6';
 import './pages.css';
+import { useEffect, useState } from 'react';
+import { Octokit } from '@octokit/rest';
+import { Tag } from '../components/Tag';
+import { Button } from '../components/Button';
+
+const ocktokit = new Octokit();
 
 const skillsMatrix = {
   'Frontend Development': [{ name: 'React', icon: <FaReact />, level: 'Experienced' }],
@@ -18,31 +24,31 @@ const skillsMatrix = {
   Devops: [{ name: 'Docker', icon: <FaCircleCheck />, level: 'Experienced' }],
 };
 
-const projectsMatrix = {
-  'Project 1': {
-    image: 'https://tangerine-hummingbird-1479b6.netlify.app/assets/project-1.png',
-    links: [
-      { name: 'GitHub', url: '' },
-      { name: 'Live Demo', url: '' },
-    ],
-  },
-  'Project 2': {
-    image: 'https://tangerine-hummingbird-1479b6.netlify.app/assets/project-2.png',
-    links: [
-      { name: 'GitHub', url: '' },
-      { name: 'Live Demo', url: '' },
-    ],
-  },
-  'Project 3': {
-    image: 'https://tangerine-hummingbird-1479b6.netlify.app/assets/project-3.png',
-    links: [
-      { name: 'GitHub', url: '' },
-      { name: 'Live Demo', url: '' },
-    ],
-  },
-};
-
 export function HomePage() {
+  const [projectData, setProjectData] = useState(
+    [] as {
+      name: string;
+      url: string;
+      description: string | null;
+      topics: string[] | undefined;
+      updated: string | null | undefined;
+    }[]
+  );
+  useEffect(() => {
+    ocktokit.rest.repos.listForUser({ username: 'bo-carey', sort: 'updated' }).then(({ data }) => {
+      setProjectData(
+        data
+          .filter((repo) => repo.fork === false)
+          .map((repo) => ({
+            name: repo.name,
+            url: repo.html_url,
+            description: repo.description,
+            topics: repo.topics,
+            updated: repo.updated_at,
+          }))
+      );
+    });
+  }, []);
   return (
     <>
       <Header />
@@ -52,9 +58,9 @@ export function HomePage() {
           <p className="intro">Hello, I'm</p>
           <h1>Bo Carey</h1>
           <p className="profession">FullStack Developer</p>
-          <div className="rounded-buttons">
-            <button>Download CV</button>
-            <button>Contact Info</button>
+          <div className="flex gap-4">
+            <Button accent="primary">Download CV</Button>
+            <Button accent="secondary">Contact Info</Button>
           </div>
         </section>
         <section id="about">
@@ -110,17 +116,22 @@ export function HomePage() {
           <p>Browse My Recent</p>
           <h1>Projects</h1>
           <div className="project-cards">
-            {Object.entries(projectsMatrix).map(([name, { image, links }]) => (
-              <div>
-                <img src={image} alt={name} />
-                <h2>{name}</h2>
-                <div className="buttons">
-                  {links.map(({ name, url }) => (
-                    <button onClick={() => window.open(url, '_blank')}>{name}</button>
-                  ))}
+            {projectData?.length &&
+              projectData.map((proj) => (
+                <div className="flex flex-col gap-4 items-center">
+                  <img src={`../assets/projects/${proj.name}.png`} alt={proj.name} />
+                  <h2>{proj.name}</h2>
+                  <p className="text-gray-700">{proj.description}</p>
+                  {proj.topics && (
+                    <div className="flex gap-2 m-auto items-center justify-center">
+                      {proj.topics.map((topic) => (
+                        <Tag>{topic}</Tag>
+                      ))}
+                    </div>
+                  )}
+                  <Button onClick={() => window.open(proj.url, '_blank')}>Github</Button>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </section>
         <section id="contact">
