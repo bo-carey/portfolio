@@ -6,11 +6,10 @@
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
-    "build:production": "tsc && vite build -m production",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "predeploy": "npm run build:production",
+    "predeploy": "npm run build",
     "preview": "vite preview",
     "start": "npm run dev"
   },

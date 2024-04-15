@@ -10,6 +10,6 @@ export default defineConfig(({ mode }) => {
       'process.env.RESUME_LINK': JSON.stringify(env.RESUME_LINK),
     },
     plugins: [react()],
-    base: mode === 'production' ? '/portfolio/' : '/',
+    base: '/portfolio/',
   };
 });
