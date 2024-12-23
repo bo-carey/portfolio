@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HorizontalCard from '../components/HorizontalCard.astro';
+import { getCollection } from 'astro:content';
+import createSlug from '../lib/createSlug';
+import LinkedZenScreenshot from '../content/projects/linkedzen_screenshot.png';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+// const projects = (await getCollection('projects')).sort(
+//   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+// );
+
+const last_posts = posts.slice(0, 3);
+// const latest_projects = projects.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID='home'>
+  <div class='pb-12 mt-5'>
+    <div class='text-xl py-1'>Hey there 👋</div>
+    <div class='text-5xl font-bold'>I'm Bo Carey</div>
+    <div class='text-3xl py-3 font-bold'>Software Engineer and Tinkerer</div>
+    <div class='py-2'>
+      <text class='text-lg'>
+        Currently working at <a
+          href='https://www.genesys.com/genesys-cloud'
+          target='_blank'
+          class='text-orange-600'>Genesys Cloud</a
+        > as a Software Engineer in web architecture. I'm passionate about web development, open-source,
+        and building cool stuff.
+      </text>
+    </div>
+    <div class='mt-8'>
+      <a class='btn' href='https://linkedin.com/in/bocarey' target='_blank'> Let's connect!</a>
+    </div>
+  </div>
+
+  <div>
+    <div class='text-3xl w-full font-bold mb-2'>My latest projects {'</>'}</div>
+  </div>
+
+  <HorizontalCard
+    title='LinkedZen'
+    img={LinkedZenScreenshot}
+    desc='A cross-browser extension designed to declutter the LinkedIn experience.'
+    url='/projects#linkedzen'
+    badge='NEW'
+  />
+
+  <div>
+    <div class='text-3xl w-full font-bold mb-5 mt-10'>Latest from blog</div>
+  </div>
+
+  {
+    last_posts.map(post => (
+      <>
+        <HorizontalCard
+          title={post.data.title}
+          img={post.data.heroImage}
+          desc={post.data.description}
+          url={'/blog/' + createSlug(post.data.title, post.slug)}
+          target='_self'
+          badge={post.data.badge}
+        />
+        <div class='divider my-0' />
+      </>
+    ))
+  }
+</BaseLayout>

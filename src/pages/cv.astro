@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TimeLineElement from '../components/cv/TimeLine.astro';
+---
+
+<BaseLayout title='Resume' sideBarActiveItemID='cv'>
+  <div class='mb-5'>
+    <div class='text-3xl w-full font-bold'>Profile</div>
+  </div>
+
+  <div class='mb-10 text-justify'>
+    Versatile Software Engineer with expertise in TypeScript, React, and API development.
+    Experienced in leading architecture overhauls and driving AI-driven solutions for scalable
+    systems. Skilled in full-stack development, cloud deployment, and fostering team collaboration.
+    Passionate about solving complex problems and enhancing user experiences in fast-paced
+    environments. Dedicated to innovation and continuous improvement, delivering impactful,
+    real-world solutions.
+    <div class='mb-5'>
+      <div class='text-3xl w-full font-bold'>Education</div>
+    </div>
+
+    <div class='time-line-container grid gap-4 mb-10'>
+      <TimeLineElement
+        title='Bachelor of Science (B.S.) in Computer Science'
+        subtitle='2016 to 2020 at Upper Iowa University, Fayette, Iowa, USA'
+      />
+    </div>
+
+    <div class='mb-5'>
+      <div class='text-3xl w-full font-bold'>Experience</div>
+    </div>
+
+    <div class='time-line-container mb-10'>
+      <TimeLineElement
+        title='Software Engineer, Genesys Cloud'
+        subtitle='From 08/2022 to present in Durham, NC'
+      >
+        <ul class='list-disc mx-6 mb-10 grid gap-2'>
+          <li>
+            Front-End architecture development with Typescript, React, Vite and Zod for safe API
+            parsing
+          </li>
+          <li>
+            Deployed code using Jenkins pipelines written in Groovy, sanity checked via e2e testing
+            with Jest before being published to staging/production CDNs.
+          </li>
+          <li>
+            Redesigned and modernized the Apps API architecture to support seamless AI integration,
+            enabling real-time metrics and generative suggestions via Genesys Copilot, significantly
+            boosting agent efficiency and customer interaction outcomes.
+          </li>
+        </ul>
+      </TimeLineElement>
+      <TimeLineElement title='Software Engineer, C2FO' subtitle='From 06/2021 to 08/2022, Remote'>
+        <ul class='list-disc mx-6 mb-10 grid gap-2'>
+          <li>
+            Java, Typescript and React development on top of Next.JS frameworks utilizing GraphQL
+            and TypeORM
+          </li>
+          <li>
+            Data Monitoring and forecasting using Datadog and New Relic, demonstrating
+            code-ownership
+          </li>
+          <li>
+            Bottom-up data management and streaming from PostgreSQL to Kafka and ElasticSearch
+          </li>
+          <li>Agile pipeline development from kick-off with Github Actions to AWS deployments</li>
+          <li>Mentored junior engineers and led knowledge transfer forums</li>
+        </ul>
+      </TimeLineElement>
+      <TimeLineElement
+        title='Contract Software Engineer'
+        subtitle='From 01/2021 to 07/2024, Remote'
+      >
+        <ul class='list-disc mx-6 mb-10 grid gap-2'>
+          <li>
+            Back-End API development for Elba Security to create multiple SaaS integrations for the
+            purpose of organization security and compliance; built integrations with Typescript,
+            Next.js, Inngest and Zod.
+          </li>
+          <li>
+            Elevated Infracode's web platform using React, Next.js, and Webpack, significantly
+            enhancing SEO and user experience, leading to a top 4 Google search ranking
+          </li>
+          <li>
+            Created the InfraSketch app, a tool for designing multicloud network diagrams with
+            Terraform code configurations, using React and Redux
+          </li>
+        </ul>
+      </TimeLineElement>
+      <TimeLineElement
+        title='Software Engineer, Crispin Corporation'
+        subtitle='From 09/2019 to 01/2021 in Raleigh, NC'
+      >
+        <ul class='list-disc mx-6 mb-10 grid gap-2'>
+          <li>
+            Front-End web development transforming PHP applications to JQuery, KnockoutJS and
+            BootstrapCSS
+          </li>
+          <li>
+            Full-Stack web development of greenfield Javascript/React application for batch media
+            processing
+          </li>
+          <li>
+            Desktop application development in C# and C++ to control physical broadcasting devices,
+            using RabbitMQ for streaming queue interactions
+          </li>
+        </ul>
+      </TimeLineElement>
+    </div>
+
+    <div class='mb-5'>
+      <div class='text-3xl w-full font-bold'>Certifications</div>
+    </div>
+
+    <ul class='list-disc mx-6 mb-10 grid gap-2'>
+      <li>
+        <a href='#' target='_blank'> Certification Name (with link)</a>
+      </li>
+      <li>
+        <a href='#' target='_blank'> Certification Name (with link)</a>
+      </li>
+    </ul>
+
+    <div class='mb-5'>
+      <div class='text-3xl w-full font-bold'>Skills</div>
+    </div>
+
+    <ul class='list-disc md:columns-5 columns-2 mx-6'>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+      <li>Skill Name</li>
+    </ul>
+  </div>
+</BaseLayout>

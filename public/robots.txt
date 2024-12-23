@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+TODO: Fix this
+Sitemap: https://astrofy-template.netlify.app/sitemap-index.xml
